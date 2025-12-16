@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="tr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Esogü Oyun Tasarımı ve Dijital Sanatlar</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Exo+2:wght@300;400;600;700&family=Inter:wght@300;400;600&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div id="app">
+        <!-- Content will go here -->
+        <header>
+            <nav>
+                <div class="logo">
+                    <img src="logo.png" alt="ESOGÜ OTDS Logo">
+                    <span>ESOGÜ OTDS</span>
+                </div>
+                <div class="hamburger">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+                <ul class="nav-links">
+                    <li><a href="#home">Ana Sayfa</a></li>
+                    <li><a href="#about">Hakkımızda</a></li>
+                    <li><a href="#join">Aramıza Katıl</a></li>
+                    <li><a href="#events">Etkinlikler</a></li>
+                    <li><a href="#gallery">Galeri</a></li>
+                    <li><a href="#contact">İletişim</a></li>
+                    <li><a href="#collaborations">İş Birlikleri</a></li>
+                </ul>
+            </nav>
+        </header>
+        <main>
+            <section id="home" class="hero">
+                <div class="hero-content">
+                    <h1>ESOGÜ OYUN TASARIMI VE DİJİTAL SANATLAR</h1>
+                    <h2>GELECEĞİ TASARLA</h2>
+                    <p>Yaratıcılığın sınırlarını zorla. Kodla, Tasarla, Oyna.</p>
+                    <a href="#join" class="btn btn-primary">Bize Katıl</a>
+                </div>
+            </section>
+
+            <!-- About & Join Split Section -->
+            <section class="split-section" id="about-join">
+                <div class="container split-container">
+                    <!-- About Side -->
+                    <div class="split-item about-split" id="about">
+                        <h2 class="section-title" style="text-align: left;">Hakkımızda</h2>
+                        <p class="section-desc" style="text-align: left;">Oyun geliştirme ve dijital tasarım
+                            tutkunlarını bir araya getiren, yaratıcı bir topluluğuz.</p>
+                        <div class="features-vertical">
+                            <div class="feature-card-small">
+                                <h3>Oyun Geliştirme</h3>
+                                <p>Unity, Unreal Engine ve Godot ile hayallerindeki dünyayı inşa et.</p>
+                            </div>
+                            <div class="feature-card-small">
+                                <h3>Dijital Tasarım</h3>
+                                <p>UI/UX, 3D modelleme ve konsept tasarımı ile vizyonunu görselleştir.</p>
+                            </div>
+                            <div class="feature-card-small">
+                                <h3>Espor & Etkinlik</h3>
+                                <p>Turnuvalar, game jam'ler ve atölyelerle yeteneklerini sergile.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Join Side -->
+                    <div class="split-item" id="join">
+                        <h2 class="section-title" style="text-align: left;">Aramıza Katıl</h2>
+                        <p class="section-desc" style="text-align: left;">Yaratıcı ekibimizin bir parçası ol.</p>
+                        <form class="join-form" id="join-form" style="margin:0; padding: 2rem;">
+                            <!-- Honeypot Field -->
+                            <input type="text" name="website_hp" class="visually-hidden" tabindex="-1"
+                                autocomplete="off">
+
+                            <div class="form-group">
+                                <input type="text" id="join-name" placeholder="İsim Soyisim" required>
+                            </div>
+                            <div class="form-group">
+                                <input type="tel" id="join-phone" placeholder="Telefon Numaran" required
+                                    pattern="[0-9]*" inputmode="numeric" title="Sadece rakam giriniz">
+                                <small
+                                    style="display: block; margin-top: 5px; color: rgba(255,255,255,0.6); font-size: 0.8rem;">
+                                    * Whatsapp grubuna katılmak için gereklidir.
+                                </small>
+                            </div>
+                            <div class="form-group">
+                                <input type="text" id="join-dept" placeholder="Fakülte - Bölüm" required>
+                            </div>
+                            <div class="form-group">
+                                <select id="join-interest" required
+                                    style="width: 100%; padding: 1rem; background: rgba(0, 0, 0, 0.3); border: 1px solid rgba(255, 255, 255, 0.1); border-radius: 10px; color: white;">
+                                    <option value="" disabled selected>İlgi Alanı Seçiniz</option>
+                                    <option value="Oyun Geliştirme">Oyun Geliştirme</option>
+                                    <option value="Dijital Tasarım">Dijital Tasarım</option>
+                                    <option value="Espor">Espor</option>
+                                    <option value="Diğer">Diğer</option>
+                                </select>
+                            </div>
+                            <button type="submit" class="btn btn-primary" style="width: 100%;">Başvur</button>
+                        </form>
+                    </div>
+                </div>
+            </section>
+
+            <section id="events" class="events">
+                <div class="container">
+                    <h2 class="section-title">Etkinlikler</h2>
+                    <p class="section-desc">Yaklaşan etkinliklerimize katıl, topluluğun bir parçası ol.</p>
+                    <div class="event-list">
+                        <!-- Events will be loaded dynamically -->
+                        <p style="text-align:center; width:100%;">Yükleniyor...</p>
+                    </div>
+                </div>
+            </section>
+            <section id="gallery" class="gallery">
+                <div class="container">
+                    <h2 class="section-title">Galeri</h2>
+                    <p class="section-desc">Üyelerimizin çalışmalarından seçkiler.</p>
+                    <div class="gallery-grid">
+                        <div class="gallery-item">
+                            <div class="gallery-placeholder">Proje 1</div>
+                        </div>
+                        <div class="gallery-item">
+                            <div class="gallery-placeholder">Proje 2</div>
+                        </div>
+                        <div class="gallery-item">
+                            <div class="gallery-placeholder">Proje 3</div>
+                        </div>
+                        <div class="gallery-item">
+                            <div class="gallery-placeholder">Proje 4</div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+
+            <section id="contact" class="contact">
+                <div class="container">
+                    <h2 class="section-title">İletişim</h2>
+                    <p class="section-desc">Soruların mı var? Bizimle iletişime geç.</p>
+                    <form class="contact-form">
+                        <!-- Honeypot Field -->
+                        <input type="text" name="website_hp" class="visually-hidden" tabindex="-1" autocomplete="off">
+
+                        <div class="form-group">
+                            <input type="text" placeholder="Adın" required>
+                        </div>
+                        <div class="form-group">
+                            <input type="email" placeholder="E-posta Adresin" required>
+                        </div>
+                        <div class="form-group">
+                            <textarea placeholder="Mesajın" rows="5" required></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Gönder</button>
+                    </form>
+                </div>
+            </section>
+        </main>
+        <section id="collaborations" class="collaborations">
+            <div class="container">
+                <h2 class="section-title">İş Birlikleri</h2>
+                <p class="section-desc">Birlikte güçlüyüz. Partnerlerimiz ve destekçilerimiz.</p>
+                <div class="collab-grid">
+                    <div class="collab-item">
+                        <span>Partner 1</span>
+                    </div>
+                    <div class="collab-item">
+                        <span>Partner 2</span>
+                    </div>
+                    <div class="collab-item">
+                        <span>Partner 3</span>
+                    </div>
+                    <div class="collab-item">
+                        <span>Partner 4</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <footer>
+            <p>&copy; 2025 Esogü Oyun Tasarımı ve Dijital Sanatlar. Tüm hakları saklıdır.</p>
+        </footer>
+    </div>
+    <!-- Firebase SDKs (Compat) -->
+    <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-auth-compat.js"></script>
+
+    <!-- Config & App Script -->
+    <script src="firebase-config.js"></script>
+    <script src="script.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="tr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Paneli - Esogü OTDS</title>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Exo+2:wght@300;400;600;700&family=Inter:wght@300;400;600&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="../style.css">
+    <style>
+        .admin-container {
+            padding-top: 100px;
+            max-width: 800px;
+            margin: 0 auto;
+            padding-bottom: 50px;
+        }
+
+        .admin-section {
+            background: rgba(255, 255, 255, 0.05);
+            padding: 2rem;
+            border-radius: 15px;
+            margin-bottom: 2rem;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .admin-section h2 {
+            margin-bottom: 1.5rem;
+            color: var(--color-primary);
+        }
+
+        .form-group {
+            margin-bottom: 1rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            color: var(--color-text-muted);
+        }
+
+        .item-list {
+            margin-top: 1rem;
+        }
+
+        .list-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: rgba(0, 0, 0, 0.2);
+            padding: 1rem;
+            margin-bottom: 0.5rem;
+            border-radius: 8px;
+        }
+
+        .delete-btn {
+            background: #ff0055;
+            color: white;
+            border: none;
+            padding: 0.5rem 1rem;
+            border-radius: 5px;
+            cursor: pointer;
+            font-family: var(--font-body);
+        }
+
+        .login-screen {
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: var(--color-bg);
+        }
+
+        .login-box {
+            background: rgba(255, 255, 255, 0.05);
+            padding: 3rem;
+            border-radius: 20px;
+            text-align: center;
+            border: 1px solid var(--color-primary);
+            box-shadow: 0 0 20px rgba(0, 210, 255, 0.2);
+        }
+
+        #dashboard {
+            display: none;
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Login Screen -->
+    <div id="login-screen" class="login-screen">
+        <div class="login-box">
+            <h2>Yönetici Girişi</h2>
+            <form id="login-form">
+                <div class="form-group">
+                    <input type="password" id="password" placeholder="Şifre" required style="text-align: center;">
+                </div>
+                <button type="submit" class="btn btn-primary">Giriş Yap</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Dashboard -->
+    <div id="dashboard">
+        <header>
+            <nav>
+                <div class="logo">
+                    <img src="../logo.png" alt="ESOGÜ OTDS Logo">
+                    <span>ESOGÜ OTDS ADMIN</span>
+                </div>
+                <ul>
+                    <li><a href="../index.html">Siteye Dön</a></li>
+                    <li><a href="#" id="logout-btn">Çıkış</a></li>
+                </ul>
+            </nav>
+        </header>
+
+        <div class="admin-container">
+            <div class="admin-section">
+                <h2>Etkinlik Ekle</h2>
+                <form id="event-form">
+                    <div class="form-group">
+                        <label>Etkinlik Adı</label>
+                        <input type="text" id="event-title" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Tarih (Gün)</label>
+                        <input type="number" id="event-day" placeholder="örn. 15" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Ay</label>
+                        <input type="text" id="event-month" placeholder="örn. EKİM" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Açıklama</label>
+                        <textarea id="event-desc" rows="3" required></textarea>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Ekle</button>
+                </form>
+                <div class="item-list" id="event-list">
+                    <!-- Events will be listed here -->
+                </div>
+            </div>
+
+            <div class="admin-section">
+                <h2>Galeri Resmi Ekle</h2>
+                <form id="gallery-form">
+                    <div class="form-group">
+                        <label>Proje Adı</label>
+                        <input type="text" id="gallery-title" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Görsel Seç</label>
+                        <input type="file" id="gallery-image" accept="image/*" required>
+                        <p style="font-size: 0.8rem; color: #aaa; margin-top: 5px;">Maksimum 500KB (Büyük görseller
+                            yüklenmeyebilir)</p>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Ekle</button>
+                </form>
+                <div class="item-list" id="gallery-list">
+                    <!-- Gallery items will be listed here -->
+                </div>
+            </div>
+
+            <div class="admin-section">
+                <h2>Gelen Mesajlar</h2>
+                <div class="item-list" id="message-list">
+                    <!-- Messages will be listed here -->
+                </div>
+            </div>
+
+            <div class="admin-section">
+                <h2>Üyelik Başvuruları</h2>
+                <div class="item-list" id="application-list">
+                    <!-- Applications will be listed here -->
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Firebase SDKs (Compat) -->
+    <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-auth-compat.js"></script>
+
+    <!-- Config & App Script -->
+    <script src="../firebase-config.js"></script>
+    <script src="../admin.js"></script>
+</body>
+
+</html>
